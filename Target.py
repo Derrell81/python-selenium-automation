@@ -15,6 +15,16 @@ driver.maximize_window()
 # open the url
 driver.get('https://www.target.com/')
 
-#Enter 'coffee' in the search bar
-driver.find_element(By.)
+# Locate Signin
+driver.find_element(By.XPATH, "//a[@data-test='@web/AccountLink']").click()
+
+# Click Signin
+driver.find_element(By.XPATH, "//li[@id='listaccountNav-signIn']").click()
 sleep(4)
+# Verification of 'Sign into your Target Account' text
+actual_text = driver.find_element(By.XPATH, "//h1[contains(@class, 'styles__AuthHeading')]").text
+assert actual_text == 'Sign into your Target account'
+
+# Verify Sign In Button
+driver.find_element(By.XPATH, "//button[@type='submit']")
+
