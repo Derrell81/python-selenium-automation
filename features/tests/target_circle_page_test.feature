@@ -1,6 +1,7 @@
 # Created by anthony at 4/23/24
-Feature: # Enter feature name here
+Feature: Test for target circle page
   # Enter feature description here
 
-  Scenario: # Enter scenario name here
-    # Enter steps here
+  Scenario: Verify page has correct amount of benefit cells
+    Given Open Target Circle page
+    Then Verify page has 10 benefit cells
