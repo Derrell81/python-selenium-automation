@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from behave import given, then
 from time import sleep
 
@@ -7,15 +8,9 @@ COLOR_OPTIONS = (By.CSS_SELECTOR, "[class*='ButtonWrapper'] img")
 SELECTED_COLOR = (By.CSS_SELECTOR, "[class*='StyledVariationSelectorImage'] [class*='StyledHeaderWrapperDiv']")
 
 
-@given('Open target product {product_id} page')
-def open_target(context, product_id):
-    context.driver.get(f'https://www.target.com/p/{product_id}')
-    sleep(8)
-
-
-@then('Verify user can click through colors')
+@then('Verify user can select through colors')
 def click_and_verify_colors(context):
-    expected_colors = ['Beige', 'Black', 'Pink', 'Light Purple']
+    colors_set = ['Blue Tint', 'Denim Blue', 'Marine', 'Raven']
     actual_colors = []
 
     colors = context.driver.find_elements(*COLOR_OPTIONS)  # [webelement1, webelement2, webelement3]
@@ -29,4 +24,4 @@ def click_and_verify_colors(context):
         actual_colors.append(selected_color)
         print(actual_colors)
 
-    assert expected_colors == actual_colors, f'Expected {expected_colors} did not match actual {actual_colors}'
+    assert colors_set == actual_colors, f'Expected {colors_set} did not match actual {actual_colors}'
