@@ -4,9 +4,6 @@ from behave import given, when, then
 from time import sleep
 
 
-
-SEARCH_INPUT = (By.ID, 'search')
-SEARCH_BTN = (By.XPATH, "//button[@data-test='@web/Search/SearchButton']")
 CART_ICON = (By.CSS_SELECTOR, "[data-test='@web/CartLink']")
 HEADER = (By.CSS_SELECTOR, "[class*='UtilityHeaderWrapper']")
 HEADER_LINKS = (By.CSS_SELECTOR, "a[id*='utilityNav']")
@@ -17,20 +14,17 @@ SIDE_NAV_ADD_TO_CART_BTN = (By.CSS_SELECTOR, "[data-test='orderPickupButton']")
 
 @given('Open Target main Page')
 def open_target(context):
-    context.driver.get('https://www.target.com/')
+    context.app.main_page.open_main()
 
 
 @when("Search for {item}")
 def search_product(context, item):
-    context.driver.find_element(*SEARCH_INPUT).send_keys(item)
-    context.driver.find_element(*SEARCH_BTN).click()
-    sleep(6)
+   context.app.header.search_product(item)
 
 
 @when('Click on Cart icon')
-def click_icon(context):
-    context.driver.find_element(*CART_ICON).click()
-
+def click_cart(context):
+    context.app.header.click_cart()
 
 @when('Click on Add to Cart button')
 def click_add_to_cart(context):
@@ -61,8 +55,9 @@ def side_nav_click_add_to_cart(context):
 
 
 @then("Verify header is shown")
-def verify_header_shown(context):
-    context.driver.find_element(*HEADER)
+def verify_header_shown(context, expected_item):
+    cpmtext.app.search_result_page.verify_search_results(expected_item)
+
 
 @then("Verify header has {expected_amount} links")
 def verify_header_links(context, expected_amount): # expected_amount = '5'
