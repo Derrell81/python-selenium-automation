@@ -17,10 +17,10 @@ def browser_init(context):
     context.driver.implicitly_wait(3)
     context.wait = WebDriverWait(context.driver, timeout=8)
 
-
     context.app = Application(context.driver)
     # context.app.header
     # context.app.main_page
+
 
 def before_scenario(context, scenario):
     print('\nStarted scenario: ', scenario.name)

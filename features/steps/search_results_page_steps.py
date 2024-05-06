@@ -7,10 +7,10 @@ LISTINGS = (By.CSS_SELECTOR, "[data-test='@web/site-top-of-funnel/ProductCardWra
 PRODUCT_TITLE = (By.CSS_SELECTOR, "[data-test='product-title']")
 PRODUCT_IMG = (By.CSS_SELECTOR, "[class*='ProductCardImage']")
 
+
 @then("Verify search results are shown for {expected_item}")
 def verify_search_results(context, expected_item):
     context.app.search_results_page.verify_search_results(expected_item)
-
 
 
 @then('Verify that every product has a name and an image')
@@ -20,7 +20,8 @@ def verify_products_name_img(context):
     sleep(4)
     context.driver.execute_script("window.scrollBy(0,2000)", "")
 
-    all_products = context.driver.find_elements(*LISTINGS)[:4]  # [WebEl1, WebEl2, WebEl3, WebEl4] will just grab the top four listings
+    all_products = context.driver.find_elements(*LISTINGS)[
+                   :4]  # [WebEl1, WebEl2, WebEl3, WebEl4] will just grab the top four listings
 
     for product in all_products:
         title = product.find_element(*PRODUCT_TITLE).text

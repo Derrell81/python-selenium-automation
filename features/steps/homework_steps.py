@@ -3,7 +3,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from behave import given, then
 from time import sleep
 
-
 COLOR_OPTIONS = (By.CSS_SELECTOR, "[class*='ButtonWrapper'] img")
 SELECTED_COLOR = (By.CSS_SELECTOR, "[class*='StyledVariationSelectorImage'] [class*='StyledHeaderWrapperDiv']")
 

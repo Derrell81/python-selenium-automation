@@ -1,4 +1,4 @@
-#Find the most optimal locators for Create Account on amazon.com (Registration) page elements:
+# Find the most optimal locators for Create Account on amazon.com (Registration) page elements:
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service

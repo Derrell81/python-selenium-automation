@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
 
-
 BENEFIT_CELLS = (By.CSS_SELECTOR, "[class*='cell-item-content']")
 
 
